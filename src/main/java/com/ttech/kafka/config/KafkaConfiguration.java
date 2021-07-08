@@ -49,7 +49,9 @@ public class KafkaConfiguration {
 		props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, bootStrapServer);
 		props.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
 		props.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, JsonSerializer.class);
+		 props.put(ProducerConfig.RETRIES_CONFIG, 3);
 		/*
+		 *  props.put(ProducerConfig.RETRIES_CONFIG, 3);
 		 * props.put(CommonClientConfigs.SECURITY_PROTOCOL_CONFIG,"");
 		 * props.put(SslConfigs.SSL_TRUSTSTORE_LOCATION_CONFIG, "");
 		 * props.put(SslConfigs.SSL_TRUSTSTORE_PASSWORD_CONFIG, "");
