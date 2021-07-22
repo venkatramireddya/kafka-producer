@@ -1,5 +1,5 @@
 server:  port: 9080
-logging:  level:     web: DEBUGspring:  kafka:    bootstrap-servers: 127.0.0.1:9092, 127.0.0.1:9092    security:      protocol: SSL    ssl:      protocol: TLS      key-store-location: src/main/resources/cst.jks      key-store-password: PASS      trust-store-location: src/main/resources/cst.jks      trust-store-password: PASS      key-password: PASS      trust-store-type: JKS        
+spring:  kafka:    bootstrap-servers: 127.0.0.1:9092, 127.0.0.1:9093, 127.0.0.1:9094    security:      protocol: SSL    ssl:      protocol: TLS      key-store-location: src/main/resources/cst.jks      key-store-password: PASS      trust-store-location: src/main/resources/cst.jks      trust-store-password: PASS      key-password: PASS      trust-store-type: JKS        
 kafka:
   topic:  GC-Test
   groupId: test-group
