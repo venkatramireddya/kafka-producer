@@ -42,6 +42,16 @@ public class KafkaConfiguration {
 	@Value("${spring.kafka.ssl.trust-store-type}")
 	private String sslTrustStoreType;
 	
+	
+	
+	@Value("${spring.kafka.ssl.key-store-location}")
+	private String sslKeyStoreLocation;
+
+	@Value("${spring.kafka.ssl.key-store-password}")
+	private String sslKeyStorePassword;
+	
+	
+	
 	@Bean
 	public ProducerFactory<String, Object> producerFactory() {
 		Map<String, Object> props = new HashMap<>();
@@ -49,18 +59,17 @@ public class KafkaConfiguration {
 		props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, bootStrapServer);
 		props.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
 		props.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, JsonSerializer.class);
-		 props.put(ProducerConfig.RETRIES_CONFIG, 3);
-		/*
-		 *  props.put(ProducerConfig.RETRIES_CONFIG, 3);
-		 * props.put(CommonClientConfigs.SECURITY_PROTOCOL_CONFIG,"");
-		 * props.put(SslConfigs.SSL_TRUSTSTORE_LOCATION_CONFIG, "");
-		 * props.put(SslConfigs.SSL_TRUSTSTORE_PASSWORD_CONFIG, "");
-		 * props.put(SslConfigs.SSL_KEYSTORE_LOCATION_CONFIG, "");
-		 * props.put(SslConfigs.SSL_KEYSTORE_PASSWORD_CONFIG, "");
-		 * props.put(SslConfigs.SSL_PROTOCOL_CONFIG, "TLS");
-		 * props.put(SslConfigs.SSL_ENABLED_PROTOCOLS_CONFIG, "TLS");
-		 * props.put(SslConfigs.SSL_ENDPOINT_IDENTIFICATION_ALGORITHM_CONFIG, "");
-		 */
+		
+		props.put(SslConfigs.SSL_TRUSTSTORE_LOCATION_CONFIG,sslTrustStoreLocation);
+		props.put(SslConfigs.SSL_TRUSTSTORE_PASSWORD_CONFIG, sslTrustStorePassword);
+		props.put(SslConfigs.SSL_KEYSTORE_LOCATION_CONFIG, sslKeyStoreLocation);
+		props.put(SslConfigs.SSL_KEYSTORE_PASSWORD_CONFIG, sslKeyStorePassword);
+		
+		props.put(ProducerConfig.RETRIES_CONFIG, 3);
+		props.put(CommonClientConfigs.SECURITY_PROTOCOL_CONFIG,"SSL");
+		props.put(ProducerConfig.ACKS_CONFIG,"all");
+		props.put(SslConfigs.SSL_ENDPOINT_IDENTIFICATION_ALGORITHM_CONFIG, "");
+		 
 
 		return new DefaultKafkaProducerFactory<>(props);
 	}
