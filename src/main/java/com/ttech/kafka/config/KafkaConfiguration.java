@@ -67,7 +67,7 @@ public class KafkaConfiguration {
 		
 		props.put(ProducerConfig.RETRIES_CONFIG, 3);
 		props.put(CommonClientConfigs.SECURITY_PROTOCOL_CONFIG,"SSL");
-		props.put(ProducerConfig.ACKS_CONFIG,"all");
+		props.put(ProducerConfig.ACKS_CONFIG,"1");
 		props.put(SslConfigs.SSL_ENDPOINT_IDENTIFICATION_ALGORITHM_CONFIG, "");
 		 
 
