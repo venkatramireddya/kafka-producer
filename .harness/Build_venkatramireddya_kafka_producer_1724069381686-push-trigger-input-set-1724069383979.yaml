@@ -1,0 +1,14 @@
+inputSet:
+  name: Build_venkatramireddya_kafka_producer_1724069381686-push-trigger-input-set
+  identifier: Build_venkatramireddya_kafka_producer_1724069381686pushtriggerinputset
+  orgIdentifier: default
+  projectIdentifier: kafkaproducer
+  pipeline:
+    identifier: Build_venkatramireddya_kafka_producer_1724069381686
+    properties:
+      ci:
+        codebase:
+          build:
+            type: branch
+            spec:
+              branch: <+trigger.branch>
